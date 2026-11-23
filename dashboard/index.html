@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="brand">
+    <div class="sweep" aria-hidden="true"></div>
+    <div>
+      <h1>Launch Radar</h1>
+      <p class="tagline">Pre-token protocols ranked by the value a launch would carry if the market priced them like the protocols that already trade.</p>
+    </div>
+  </div>
+  <div class="kpis" id="kpis"></div>
+</header>
+
+<section class="model-strip" id="model-strip"></section>
+
+<div class="controls">
+  <label>Search <input id="q" type="search" placeholder="name or slug"></label>
+  <label>Category <select id="f-category"><option value="">All categories</option></select></label>
+  <label>Chain <select id="f-chain"><option value="">All chains</option></select></label>
+  <label class="check"><input id="f-watch" type="checkbox"> Watchlist only</label>
+  <label>Max farm cost <select id="f-cost">
+    <option value="">Any cost</option><option value="150">up to $150</option>
+    <option value="300">up to $300</option><option value="600">up to $600</option>
+  </select></label>
+  <label>Sort <select id="f-sort">
+    <option value="rank">Implied value</option><option value="tvl">TVL</option>
+    <option value="growth">7d growth</option><option value="cheap">Cheapest farm</option>
+    <option value="age">Longest tokenless</option>
+  </select></label>
+  <span class="count" id="count"></span>
+</div>
+
+<main class="layout">
+  <section class="board-wrap">
+    <table class="board">
+      <thead><tr>
+        <th>#</th><th>Protocol</th><th>Category</th><th>TVL</th><th>7d</th>
+        <th>Age</th><th>Implied value</th><th>Range</th><th>Farm cost</th><th>Cost %</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+  <aside class="detail" id="detail"></aside>
+</main>
+
+<footer class="foot">
+  <p>Implied value is this entry's model claim, not a prediction that a token will be issued and not a promise of an airdrop. Farm costs are estimates computed from the stated per-archetype parameters (gas per action by chain, actions per week, programme weeks, bridge and slippage allowances) because the sealed snapshot carries no live cost data. Snapshot: DefiLlama protocols, frozen by the house; the model is fitted only on that snapshot's own figures.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
